@@ -1,0 +1,64 @@
+plotting Methods:
+
+hist(FE6$Fare,col='red')
+
+
+ggplot(FE9, aes(x = DifferenceInDays, y = FareChange)) +
+geom_point(color = "darkorchid1")+
+theme(panel.background = element_rect(fill = 'azure2'))
+
+ggplot(FE9, aes(x = DayOfJourney, y = FareChange)) +
+ geom_point(color = "cornflowerblue")+
+ theme(panel.background = element_rect(fill = 'aliceblue'))
+
+
+ ggplot(FE9, aes(x = Curr_Time, y = FareChange)) +
+ geom_point(color = "yellow")+
+theme(panel.background = element_rect(fill = 'antiquewhite'))
+
+
+ggplot(FE9, aes(x = DifferenceInDays, y = FareChange)) +
+ geom_point(color =p$cluster)+
+theme(panel.background = element_rect(fill = 'antiquewhite'))
+
+ggplot(s3, aes(x = CorFareDifnDays, y = FareSD)) +
+ geom_point(color =result$cluster)+
+theme(panel.background = element_rect(fill = 'antiquewhite'))
+
+
+p<-kmeans(FE9,6)
+plot(FE9[c('DifferenceInDays','FareChange')],col=p$cluster)
+table(FE8$Airline,p$cluster)
+
+
+result<-kmeans(s4,6)
+table(s3$Airline,result$cluster)
+plot(s3[c('CorFareDifnDays','FareSD')],col=result$cluster)
+
+
+ p1<-data.frame(table(FE8$Airline,p$cluster))
+ p2<-p1[p1$Var2==2,]
+ p3<-p2[c('Var1','Freq')]
+library(plotly)
+Sys.setenv("plotly_username"="aps1310")
+Sys.setenv("plotly_api_key"="8zjFIfaxsXo7eEZFaIRr")
+ p4 <- plot_ly(p3, labels =~Var1 , values = ~Freq, type = 'pie') %>%
+  layout(title = 'Cluster Plot',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+        yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+ chart_link = plotly_POST(p4, filename="basic3")
+ chart_link
+
+result<-kmeans(s4,6)
+p1<-data.frame(table(s3$Airline,result$cluster))
+p2<-p1[p1$Var2==6,]
+ p3<-p2[c('Var1','Freq')]
+library(plotly)
+Sys.setenv("plotly_username"="aps1310")
+Sys.setenv("plotly_api_key"="8zjFIfaxsXo7eEZFaIRr")
+p4 <- plot_ly(p3, labels =~Var1 , values = ~Freq, type = 'pie') %>%
+  layout(title = 'Unique Flight Fare Agrresion Cluster',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+        yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+ chart_link = plotly_POST(p4, filename="basic4")
+ chart_link

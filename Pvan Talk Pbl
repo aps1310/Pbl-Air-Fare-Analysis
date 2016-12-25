@@ -1,0 +1,19 @@
+he asked to get  flight details based on some airlines
+
+he asked us to create a fare matrix based on date of booking and the time of booking
+
+asked us to plot a fares based on date of booking and days left for journey(time and date of booking)
+
+the random seed or the function u choose is also importnat it should also capture the pattern of the logical fares
+
+then use a classifier to create classes based on airline companies which increase price aggresilvely 
+
+it should also include that criteria that if difference between date of journey and date of booking is 30 days also look on that issue this is 
+during which motnh(like wether it is during june-july or november)
+
+based on majority of companies in this class u try to figure out which company is bad in price rising
+
+
+if possible 
+    suggest a better date or hour... 
+
